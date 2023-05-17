@@ -1,0 +1,87 @@
+{"properties": [
+  {
+    "name": "smartinventory.mail.to",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mail.to'"
+  },
+  {
+    "name": "smartinventory.mail.subject",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mail.subject'"
+  },
+  {
+    "name": "smartinventory.mail.message",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mail.message'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.clientId",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.clientId'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.password",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.password'"
+  },
+  {
+    "name": "smartinventory.mqtt.username",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.username'"
+  },
+  {
+    "name": "smartinventory.mqtt.clientId",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.clientId'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  },
+  {
+    "name": "smartinventory.mqtt.brokerUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'smartinventory.mqtt.brokerUrl'"
+  }
+]}
