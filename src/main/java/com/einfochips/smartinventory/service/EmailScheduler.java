@@ -28,7 +28,7 @@ public class EmailScheduler {
 	@Value("${smartinventory.mail.message}")
 	private String body;
 	
-	@Scheduled(fixedDelay = 60*60*1000)
+	@Scheduled(fixedDelay = 60*1000)
 	public void checkProductQuantity() {
 		List<Product> products = productService.getAllProducts();
 		for(Product product: products) {
