@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +39,7 @@ public class HomeController {
 	private ProductService productService;
 	
 	@GetMapping("/")
-	public ModelAndView getIndex(OAuth2AuthenticationToken token) {
+	public ModelAndView getIndex() {
 //		String email = token.getPrincipal().getAttribute("email");
 //		String name = token.getPrincipal().getAttribute("name");
 //		if(email.equalsIgnoreCase("pateljimi21@gmail.com")) {

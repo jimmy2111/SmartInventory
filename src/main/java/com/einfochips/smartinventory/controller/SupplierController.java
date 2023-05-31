@@ -1,9 +1,12 @@
 package com.einfochips.smartinventory.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +18,7 @@ import com.einfochips.smartinventory.model.Supplier;
 import com.einfochips.smartinventory.service.SupplierService;
 
 @RestController
+@CrossOrigin
 public class SupplierController {
 	private static final Logger logger=LoggerFactory.getLogger(SupplierController.class);
 	@Autowired
@@ -79,6 +83,22 @@ public class SupplierController {
 		modelAndView.addObject("sortOrder", sortOrder);
 		modelAndView.addObject("revSortOrder", sortOrder.equalsIgnoreCase("asc")?"desc":"asc");
 		return modelAndView;
+	}
+	@GetMapping("/viewallsuppliers")
+	public List<Supplier> getSuppliers(@RequestParam(defaultValue = "0") Integer pageNo,
+			@RequestParam(defaultValue = "4") Integer pageSize,
+			@RequestParam(defaultValue = "id") String sortField,
+			@RequestParam(defaultValue = "asc") String sortOrder){
+		return supplierService.getSupplierByPagingAndSorting(pageNo, pageSize, sortField, sortOrder).getContent();
+		
+	}
+	@PostMapping("/addsupplier")
+	public Supplier addSupplier(@RequestParam String name, @RequestParam String address, @RequestParam String contact) {
+		Supplier supplier = new Supplier();
+		supplier.setName(name);
+		supplier.setAddress(address);
+		supplier.setContact(contact);
+		return supplierService.createSupplier(supplier);
 	}
 
 }

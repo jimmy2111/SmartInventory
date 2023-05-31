@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.einfochips.smartinventory.service.ProductService;
 import com.einfochips.smartinventory.service.SupplierService;
 
 @RestController
+@CrossOrigin
 public class ProductController {
 	private static final Logger logger=LoggerFactory.getLogger(ProductController.class);
 	
@@ -91,8 +93,24 @@ public class ProductController {
 		logger.info("Saving Product");
 		return modelAndView;	
 	}
- @GetMapping("/view")
- public List<Product> getProducts(){
-	 return productService.getAllProducts();
+ @GetMapping("/viewproducts")
+ public List<Product> getProducts(@RequestParam(defaultValue = "0") Integer pageNo,
+			@RequestParam(defaultValue = "4") Integer pageSize,
+			@RequestParam(defaultValue = "name") String sortField,
+			@RequestParam(defaultValue = "asc") String sortOrder){
+	 return productService.getAllProductsByPagingAndSorting(pageNo, pageSize, sortField, sortOrder).getContent();
  }
+ @PostMapping("/searchforproduct")
+	public List<Product> searchforproduct(@RequestParam String name,@RequestParam(defaultValue = "0") Integer pageNo,
+			@RequestParam(defaultValue = "4") Integer pageSize,
+			@RequestParam(defaultValue = "name") String sortField,
+			@RequestParam(defaultValue = "asc") String sortOrder) throws Exception {
+		logger.info("Searching for Product");
+		Page<Product> page = productService.searchProducts(name, pageNo, pageSize, sortField, sortOrder);
+		if(page.isEmpty()) {
+			throw new Exception("Product is Not Found");
+		}
+		logger.info("Found Product...");
+		return page.getContent();
+	}
 }
