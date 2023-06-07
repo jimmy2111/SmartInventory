@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.einfochips.smartinventory.model.Product;
 import com.einfochips.smartinventory.model.Supplier;
 import com.einfochips.smartinventory.service.SupplierService;
 
@@ -99,6 +100,23 @@ public class SupplierController {
 		supplier.setAddress(address);
 		supplier.setContact(contact);
 		return supplierService.createSupplier(supplier);
+	}
+	@PostMapping("/searchforsupplier")
+	public List<Supplier> searchForSupplier(@RequestParam String name,@RequestParam(defaultValue = "0") Integer pageNo,
+			@RequestParam(defaultValue = "4") Integer pageSize,
+			@RequestParam(defaultValue = "name") String sortField,
+			@RequestParam(defaultValue = "asc") String sortOrder) throws Exception {
+		logger.info("Searching for Supplier");
+		Page<Supplier> page = supplierService.searchSupplier(name, pageNo, pageSize, sortField, sortOrder);
+		if(page.isEmpty()) {
+			throw new Exception("Supplier is Not Found");
+		}
+		logger.info("Found Supplier...");
+		return page.getContent();
+	}
+	@GetMapping("/viewsupplier")
+	public List<Supplier> getSuppliers(){
+		return supplierService.getAllSuppliers();
 	}
 
 }

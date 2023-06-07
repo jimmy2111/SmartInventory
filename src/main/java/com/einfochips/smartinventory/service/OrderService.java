@@ -39,10 +39,11 @@ public class OrderService {
         return orderRepo.save(order);
     }
 
-    public void deleteOrder(Long orderId) {
+    public boolean deleteOrder(Long orderId) {
         Order order = getOrderById(orderId);
         logger.info("Deleting Order...");
         orderRepo.delete(order);
+        return true;
     }
 
 }

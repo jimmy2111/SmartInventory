@@ -47,10 +47,11 @@ public class SupplierService {
     	logger.info("Creating New Supplier");
     	return supplierRepo.save(supplier);
     }
-    public void deleteSupplier(Long supplierId) {
+    public boolean deleteSupplier(Long supplierId) {
         Supplier supplier = getSupplierById(supplierId);
         logger.info("Deleting Supplier...");
         supplierRepo.delete(supplier);
+        return true;
     }
 
     public Supplier updateSupplier(Long supplierId, Supplier supplierDetails) {

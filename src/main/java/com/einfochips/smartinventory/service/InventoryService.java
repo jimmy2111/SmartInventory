@@ -60,9 +60,10 @@ public class InventoryService {
         return inventoryRepo.save(inventory);
     }
 
-    public void deleteInventory(Long id) {
+    public boolean deleteInventory(Long id) {
     	logger.info("Deleting Inventory");
         Inventory inventory = inventoryRepo.findById(id).orElse(null);
         inventoryRepo.delete(inventory);
+        return true;
     }
 }

@@ -51,7 +51,7 @@ public class OrderController {
 	@Value("${smartinventory.mail.message}")
 	private String body;
 	
-	@PostMapping("registerOrder")
+	@PostMapping("/registerOrder")
 	public ModelAndView placeOrder(@ModelAttribute Customer customer,
 			@ModelAttribute Order order,
 			@RequestParam(name = "id[]") Long[] id, 

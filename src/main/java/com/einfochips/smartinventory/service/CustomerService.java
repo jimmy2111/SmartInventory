@@ -41,10 +41,11 @@ public class CustomerService {
         return customerRepo.save(customer);
     }
 
-    public void deleteCustomer(String customerId) {
+    public boolean deleteCustomer(String customerId) {
         Customer customer = getCustomerById(customerId);
         logger.info("Deleting Customer...");
         customerRepo.delete(customer);
+        return true;
     }
 
 }

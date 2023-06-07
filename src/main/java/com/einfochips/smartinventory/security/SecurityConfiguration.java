@@ -25,40 +25,21 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-
-import com.einfochips.smartinventory.service.CustomOAuth2UserService;
-import com.einfochips.smartinventory.service.CustomUserDetailsService;
-
 import jakarta.servlet.http.HttpServletRequest;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration{
 	private static final Logger logger=LoggerFactory.getLogger(SecurityConfiguration.class);
-	@Autowired
-	private CustomOAuth2UserService customOAuth2UserService;
-	
-	@Autowired
-	private CustomUserDetailsService customUserDetailsService;
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		CorsConfigurationSource configurationSource = new CorsConfigurationSource() {
-            @Override
-            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-                CorsConfiguration config = new CorsConfiguration();
-                config.setAllowedOrigins(Arrays.asList(
-                        "http://localhost:4200"));
-                config.setAllowedMethods(Collections.singletonList("*"));
-                config.setAllowCredentials(true);
-                config.setAllowedHeaders(Collections.singletonList("*"));
-                config.setMaxAge(3600L);
-                return config;
-            }
-        };
-		http.cors().configurationSource(configurationSource).and().csrf().disable()
+		http.csrf().disable()
 		.authorizeHttpRequests()
-		.requestMatchers("/publish-message","/viewproducts","/searchforproduct","/viewallsuppliers","/addsupplier","/publishfordevice/*").permitAll()
+		.requestMatchers("/publish-message","/viewproducts","/saveproduct","/addproduct",
+				"/searchforproduct","/viewallsuppliers","/addsupplier","/searchforsupplier","/viewsupplier",
+				"/viewinventory","/searchforinventory",
+				"/publishfordevice/*").permitAll()
 				.anyRequest().authenticated().and()
 				.oauth2Login();
 		logger.info("Calling oAuth2UserService");
